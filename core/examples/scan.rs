@@ -1,6 +1,6 @@
 //! Debug scan, read-only:
-//!   cargo run -p devsweep-core --example scan -- [provider ids...] [--top N] [-v] [--plan id:pkg,...]
-use devsweep_core::{clean, report, scan};
+//!   cargo run -p prune-core --example scan -- [provider ids...] [--top N] [-v] [--plan id:pkg,...]
+use prune_core::{clean, report, scan};
 
 fn main() {
     let mut ids = Vec::new();

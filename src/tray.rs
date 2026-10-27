@@ -2,9 +2,9 @@
 //! no window and no GPU context. It owns the auto-clean timer.
 
 use crate::{icon, platform};
-use devsweep_core::fsutil::human_bytes;
-use devsweep_core::settings::{settings_path, Settings, State};
-use devsweep_core::{clean, scan, timefmt};
+use prune_core::fsutil::human_bytes;
+use prune_core::settings::{settings_path, Settings, State};
+use prune_core::{clean, scan, timefmt};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
 use std::time::SystemTime;
@@ -189,10 +189,10 @@ fn start_run(shared: &Arc<Shared>, settings: Settings, why: &'static str) {
             let sel = clean::auto_selection(&reports, &settings);
             let plan = clean::plan(&sel);
             if DRY_RUN.load(Ordering::SeqCst) {
-                devsweep_core::settings::log_history(&format!("auto-clean ({why}) DRY RUN\n{}", clean::describe(&plan)));
+                prune_core::settings::log_history(&format!("auto-clean ({why}) DRY RUN\n{}", clean::describe(&plan)));
                 format!("Dry run: would free {}", human_bytes(plan.bytes))
             } else if plan.is_empty() {
-                devsweep_core::settings::log_history(&format!("auto-clean ({why}): nothing to clean"));
+                prune_core::settings::log_history(&format!("auto-clean ({why}): nothing to clean"));
                 state.last_freed = 0;
                 "Last run: nothing to clean".to_string()
             } else {
