@@ -8,6 +8,10 @@ Supported: **npm, pnpm, Yarn, Bun, pip, uv, Cargo, Go, NuGet**. Only managers th
 
 Everything Prune removes is a download cache. Projects keep working, and the package manager downloads a package again the next time a project needs it. Prune never touches `node_modules`, virtual environments or installed tools (`~/.cargo/bin`, global npm installs).
 
+![Prune overview: cache size per package manager](docs/main.png)
+
+![Prune settings: auto-clean schedule, tray and theme](docs/settings.png)
+
 ## What it shows
 
 - One group per package manager, with its cache folders, size on disk and how much is reclaimable.
