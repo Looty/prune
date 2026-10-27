@@ -1,0 +1,40 @@
+[workspace]
+members = ["core"]
+resolver = "2"
+
+[package]
+name = "devsweep"
+version = "0.1.0"
+edition = "2021"
+description = "Prune: find and clean dev package-manager caches"
+license = "MIT"
+repository = "https://github.com/Looty/prune"
+
+# The crates keep their original devsweep names; the app and exe are Prune.
+[[bin]]
+name = "prune"
+path = "src/main.rs"
+
+[dependencies]
+devsweep-core = { path = "core" }
+eframe = { version = "0.37.0", default-features = false, features = ["glow", "default_fonts"] }
+egui_extras = "0.37.0"
+serde_json = "1.0.154"
+tray-icon = "0.26.1"
+windows-sys = { version = "0.61.2", features = ["Win32_Foundation", "Win32_UI_WindowsAndMessaging", "Win32_System_Threading", "Win32_Security", "Win32_System_Registry", "Win32_System_Console"] }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev.package."*"]
+opt-level = 2
+
+[profile.dev.package.devsweep-core]
+opt-level = 2
+
+[build-dependencies]
+winresource = "0.1.34"
