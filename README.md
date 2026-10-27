@@ -61,7 +61,7 @@ prune --debug --top 0    # every package
 The report is also saved to `%APPDATA%\Prune\debug-report.txt`. During development the same report is available without the GUI crate:
 
 ```bash
-cargo run -p devsweep-core --example scan -- pnpm --top 30 -v --plan pnpm:react
+cargo run -p prune-core --example scan -- pnpm --top 30 -v --plan pnpm:react
 ```
 
 `prune --screenshot out.png [--state settings|history|dark|light|select|confirm|cleaning|scanning|<manager id>]` renders the window, saves a PNG and exits. It's used to check the UI without clicking; `cleaning` only shows the progress dialog and deletes nothing.
@@ -80,7 +80,7 @@ The binary is `target\release\prune.exe`, with its icon and name embedded (`buil
 
 ## Layout
 
-- `core/` (crate `devsweep-core`): detection, scanning, cleanup planning and execution (no UI).
+- `core/` (crate `prune-core`): detection, scanning, cleanup planning and execution (no UI).
   - `providers/*.rs`: one file per package manager.
   - `clean.rs`: `plan` (pure) and `execute` (the only code that deletes).
 - `src/`: window (`app.rs`), tray (`tray.rs`), theme, icon (`icon.rs`, drawn in code), Win32 helpers, debug output.

@@ -141,13 +141,13 @@ pub fn system_dark() -> bool {
 
 /// Ask a running window to show a page (read when it gains focus).
 pub fn request_page(page: &str) {
-    let dir = devsweep_core::settings::data_dir();
+    let dir = prune_core::settings::data_dir();
     let _ = std::fs::create_dir_all(&dir);
     let _ = std::fs::write(dir.join("open-page"), page);
 }
 
 pub fn take_page_request() -> Option<String> {
-    let path = devsweep_core::settings::data_dir().join("open-page");
+    let path = prune_core::settings::data_dir().join("open-page");
     let s = std::fs::read_to_string(&path).ok()?;
     let _ = std::fs::remove_file(&path);
     Some(s.trim().to_string()).filter(|s| !s.is_empty())

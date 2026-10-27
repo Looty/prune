@@ -1,7 +1,7 @@
 //! `--debug`: print scan data and the auto-clean dry-run plan. Read-only.
 
-use devsweep_core::settings::{data_dir, settings_path, Settings, State};
-use devsweep_core::{clean, report, scan, timefmt};
+use prune_core::settings::{data_dir, settings_path, Settings, State};
+use prune_core::{clean, report, scan, timefmt};
 use std::fmt::Write;
 
 pub fn run(args: &[String]) {
@@ -44,8 +44,8 @@ pub fn run(args: &[String]) {
         out,
         "last auto run: {}  last freed: {}  total freed: {}",
         st.last_auto_run.map(|u| timefmt::date(Some(timefmt::from_unix(u)))).unwrap_or_else(|| "never".into()),
-        devsweep_core::fsutil::human_bytes(st.last_freed),
-        devsweep_core::fsutil::human_bytes(st.total_freed)
+        prune_core::fsutil::human_bytes(st.last_freed),
+        prune_core::fsutil::human_bytes(st.total_freed)
     );
     let sel = clean::auto_selection(&reports, &s);
     out.push_str(&clean::describe(&clean::plan(&sel)));

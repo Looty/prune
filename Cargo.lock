@@ -369,32 +369,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f27ae1dd37df86211c42e150270f82743308803d90a6f6e6651cd730d5e1732f"
 
 [[package]]
-name = "devsweep"
-version = "0.1.0"
-dependencies = [
- "devsweep-core",
- "eframe",
- "egui_extras",
- "serde_json",
- "tray-icon",
- "windows-sys 0.61.2",
- "winresource",
-]
-
-[[package]]
-name = "devsweep-core"
-version = "0.1.0"
-dependencies = [
- "base64",
- "rayon",
- "rusqlite",
- "serde",
- "serde_json",
- "windows-sys 0.61.2",
- "zip",
-]
-
-[[package]]
 name = "dirs"
 version = "7.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2142,6 +2116,32 @@ name = "profiling"
 version = "1.0.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3d595e54a326bc53c1c197b32d295e14b169e3cfeaa8dc82b529f947fba6bcf5"
+
+[[package]]
+name = "prune"
+version = "0.1.0"
+dependencies = [
+ "eframe",
+ "egui_extras",
+ "prune-core",
+ "serde_json",
+ "tray-icon",
+ "windows-sys 0.61.2",
+ "winresource",
+]
+
+[[package]]
+name = "prune-core"
+version = "0.1.0"
+dependencies = [
+ "base64",
+ "rayon",
+ "rusqlite",
+ "serde",
+ "serde_json",
+ "windows-sys 0.61.2",
+ "zip",
+]
 
 [[package]]
 name = "pxfm"

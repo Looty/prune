@@ -3,13 +3,13 @@
 
 use crate::platform::{self, WINDOW_TITLE};
 use crate::theme::{self, icon_font, semibold, Icons, Palette};
-use devsweep_core::fsutil::human_bytes as hb;
-use devsweep_core::settings::{IntervalUnit, Settings, State, Theme};
-use devsweep_core::{clean, providers, scan, timefmt, Kind, Package, ProviderReport, Target};
 use eframe::egui::{
     self, Align, Align2, Color32, CornerRadius, FontId, Frame, Id, Layout, Margin, Pos2, Rect, Response, RichText, Sense, Stroke, Ui,
     UiBuilder, Vec2,
 };
+use prune_core::fsutil::human_bytes as hb;
+use prune_core::settings::{IntervalUnit, Settings, State, Theme};
+use prune_core::{clean, providers, scan, timefmt, Kind, Package, ProviderReport, Target};
 use std::collections::{HashMap, HashSet};
 use std::sync::mpsc::{channel, Receiver, Sender};
 use std::sync::Arc;
@@ -991,8 +991,8 @@ impl App {
             ui.add_space(14.0);
             section_title(ui, "Data");
             card(ui, &p, |ui| {
-                let dir = devsweep_core::settings::data_dir();
-                let shown = dir.display().to_string().replace(&devsweep_core::fsutil::app_data().display().to_string(), "%APPDATA%");
+                let dir = prune_core::settings::data_dir();
+                let shown = dir.display().to_string().replace(&prune_core::fsutil::app_data().display().to_string(), "%APPDATA%");
                 let desc = format!("{shown} · settings, history.log, debug-report.txt");
                 setting_row(ui, &p, "Settings and history", Some(desc.as_str()), |ui| {
                     if ui.add(std_button(&p, &format!("{}  Open folder", self.icons.get("folder")))).clicked() {
@@ -1368,7 +1368,7 @@ fn join_and(v: &[&str]) -> String {
 }
 
 fn load_history() -> Vec<String> {
-    let path = devsweep_core::settings::data_dir().join("history.log");
+    let path = prune_core::settings::data_dir().join("history.log");
     let text = std::fs::read_to_string(path).unwrap_or_default();
     text.lines().rev().take(300).map(str::to_string).collect()
 }

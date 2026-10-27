@@ -1,14 +1,14 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 //! Prune: find and clean global caches of dev package managers.
 //!
-//!   devsweep              open the window
-//!   devsweep --tray       run the background tray (auto-clean timer)
-//!   devsweep --tray --dry-run   same, but scheduled runs only log their plan
-//!   devsweep --debug [ids...] [--top N] [-v]
+//!   prune              open the window
+//!   prune --tray       run the background tray (auto-clean timer)
+//!   prune --tray --dry-run   same, but scheduled runs only log their plan
+//!   prune --debug [ids...] [--top N] [-v]
 //!                         print everything the scan finds plus the auto-clean
 //!                         dry-run plan. Read-only; never deletes anything.
-//!   devsweep --page settings|history   open the window on a page
-//!   devsweep --screenshot out.png [--state settings|history|dark|light|select|confirm|<id>]
+//!   prune --page settings|history   open the window on a page
+//!   prune --screenshot out.png [--state settings|history|dark|light|select|confirm|<id>]
 //!                         render the window after scanning, save a PNG, exit.
 
 mod app;
