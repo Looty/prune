@@ -3,13 +3,13 @@
 
 use crate::platform::{self, WINDOW_TITLE};
 use crate::theme::{self, icon_font, semibold, Icons, Palette};
-use prune_core::fsutil::human_bytes as hb;
-use prune_core::settings::{IntervalUnit, Settings, State, Theme};
-use prune_core::{clean, providers, scan, timefmt, Kind, Package, ProviderReport, Target};
 use eframe::egui::{
     self, Align, Align2, Color32, CornerRadius, FontId, Frame, Id, Layout, Margin, Pos2, Rect, Response, RichText, Sense, Stroke, Ui,
     UiBuilder, Vec2,
 };
+use prune_core::fsutil::human_bytes as hb;
+use prune_core::settings::{IntervalUnit, Settings, State, Theme};
+use prune_core::{clean, providers, scan, timefmt, Kind, Package, ProviderReport, Target};
 use std::collections::{HashMap, HashSet};
 use std::sync::mpsc::{channel, Receiver, Sender};
 use std::sync::Arc;
